@@ -1,0 +1,76 @@
+*:not(code, pre) {
+  font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+p {
+  font-size: 16px !important;
+}
+
+h3 {
+  font-size: 16px !important;
+}
+
+*:not(h1, h2, h3, h4, h5) {
+  font-size: 12px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+a {
+  color: #00A0FF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.fancy-button {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.fracbox {
+  width: 20px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.fracbox input {
+  width: 5em;
+  border: none;
+}
+
+input.num {
+  border-bottom: 2px solid black;
+}
+
+.fracbox table {
+  display: inline;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
