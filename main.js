@@ -103,3 +103,33 @@ function fracStep() {
     $("#n").val(n);
   }
 }
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+function saveProgram() {
+  var filename = prompt("Enter a filename: ", "fractran-program.frac");
+  var saveN = $("#saveN").prop("checked");
+  var prog = "";
+  if (saveN) {
+    prog += $("#n").val();
+  }
+  prog += "; "
+  for (var i of activeHandlers) {
+    prog += fracHandlers[i].getFrac()[0];
+    prog += "/";
+    prog += fracHandlers[i].getFrac()[1];
+    prog += ", ";
+  }
+  download(filename, prog.substring(0, prog.length - 2));
+}
