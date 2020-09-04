@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="main.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
   </head>
   <body>
     <h2>FRACTRAN</h2>
@@ -32,7 +34,8 @@
           </span>-->
         </div>
         <button class="fancy-button" id="add-fraction">+</button><button class="fancy-button" onclick="reset()">&times;</button><hr />
-        <button id="step" onclick="fracStep()">Step</button>
+        <button id="step" onclick="fracStep()">Step</button><!--<button id="run">Run</button>-->
+        <textarea id="running" style="display: none;">0</textarea>
       </div>
       <p>Or load a program:<br /><input id="program" type="file" accept=".frac, .fractran, .fc, .txt"><button id="load">Load!</button></p>
       <p>n=<input type="number" id="n" /></p>
@@ -43,6 +46,13 @@
         by commas, and the numerator and denominator are separated by a slash (ex. <code>144/77</code>). Save it as a <code>.frac</code>,
         <code>.fc</code>, <code>.fractran</code>, or <code>.txt</code> file.
       </p></div>
+      <!--
+      <button class="accordion">FRACTRAN filter</button>
+      <div class="panel">
+        When n is a product of these primes...<br />
+        <textarea id="p">2, 3</textarea>
+      </div>
+      -->
     </div>
     <script src="FRACTRAN.js"></script>
     <script src="main.js"></script>
