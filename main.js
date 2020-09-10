@@ -36,6 +36,18 @@ class fracHandler {
     this.numerator.val(frac[0]);
     this.denominator.val(frac[1]);
   }
+
+  disable() {
+    this.numerator.prop('disabled', true);
+    this.denominator.prop('disabled', true);
+    this.delButton.prop('disabled', true);
+  }
+
+  enable() {
+    this.numerator.prop('disabled', false);
+    this.denominator.prop('disabled', false);
+    this.delButton.prop('disabled', false);
+  }
 }
 
 function reset() {
@@ -99,8 +111,10 @@ function fracStep() {
   var n = step($("#n").val(), prog);
   if (isNaN(n)) {
     alert("Program has terminated");
+    return true;
   } else {
     $("#n").val(n);
+    return false;
   }
 }
 
@@ -132,4 +146,53 @@ function saveProgram() {
     prog += ", ";
   }
   download(filename, prog.substring(0, prog.length - 2));
+}
+
+class fracUtil {
+  static runUntil(detect) {
+    function end() {
+      for (var i of activeHandlers) {
+        fracHandlers[i].enable();
+      }
+      $("#running").val("0");
+      $("#run").text("Run");
+      $("#run").off("click");
+    }
+    for (var i of activeHandlers) {
+      fracHandlers[i].disable();
+    }
+    $("#running").val("1");
+    $("#run").text("Stop");
+    $("#run").on("click", function() {
+      $("#running").val("0");
+    });
+    while ($("#running").val() == "1") {
+      if (detect($("#n").val())) {
+        break;
+      }
+      var a = fracStep();
+      if (a) {
+        break;
+      }
+    }
+    end();
+  }
+
+  static sieve(n, primes) {
+    while (true) {
+      if (n == 1) {
+        return true
+      }
+      if (primes.length == 0) {
+        return false;
+      }
+      if (n % primes[0] == 0) {
+        n = n / primes[0];
+      } else {
+        primes.splice(0, 1);
+      }
+    }
+  }
+
+  
 }

@@ -1,7 +1,7 @@
 function step(n, fracContext) {
   for (var f of fracContext) {
     if (n % f[1] == 0) {
-      return n * f[0] / f[1];
+      return Math.round(n * f[0] / f[1]);
     }
   }
   return NaN;

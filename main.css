@@ -36,6 +36,7 @@ a:hover {
   width: 20px;
   text-align: center;
   margin-right: 10px;
+  display: flex;
 }
 
 .fracbox input {
